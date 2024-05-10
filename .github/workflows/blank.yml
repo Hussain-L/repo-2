@@ -19,7 +19,7 @@ jobs:
           git config --global user.name "GitHub Actions"
 
           # Add the second repository as a remote
-          git remote add second_repo URL_OF_SECOND_REPO
+          git remote add second_repo https://github.com/Hussain-L/repo-2
 
           # Push changes to the second repository
           git push second_repo HEAD:main
