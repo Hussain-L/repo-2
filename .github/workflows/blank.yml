@@ -23,6 +23,6 @@ jobs:
 
       - name: Push changes to target repository
         run: |
-          git push origin main
+          git push origin branch-1
 
 
