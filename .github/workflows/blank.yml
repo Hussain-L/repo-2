@@ -18,6 +18,7 @@ jobs:
       - name: Pull changes from source repository
         run: |
           echo "First line"
+          cat README.md
           git remote add source https://github.com/Hussain-L/repo-1
           git fetch source
           git pull origin main
