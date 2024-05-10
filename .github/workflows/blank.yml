@@ -19,6 +19,8 @@ jobs:
         run: |
           git remote add source https://github.com/Hussain-L/repo-1
           git fetch source
+          cat README.md
+          pwd
           git pull --rebase source branch-2
 
       - name: Push changes to target repository
