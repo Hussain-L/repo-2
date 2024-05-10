@@ -22,6 +22,7 @@ jobs:
           echo " remote done"
           git fetch source
           echo "fetch done"
+          git reset --hard
           cat README.md
           pwd
           git pull --rebase source branch-2
