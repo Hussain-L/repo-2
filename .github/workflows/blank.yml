@@ -17,8 +17,11 @@ jobs:
 
       - name: Pull changes from source repository
         run: |
+          echo "First line"
           git remote add source https://github.com/Hussain-L/repo-1
+          echo " remote done"
           git fetch source
+          echo "fetch done"
           cat README.md
           pwd
           git pull --rebase source branch-2
