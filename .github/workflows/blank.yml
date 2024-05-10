@@ -21,7 +21,7 @@ jobs:
           cat README.md
           git remote add source https://github.com/Hussain-L/repo-1
           git fetch source
-          git pull origin main
+          git pull source main
           cat README.md
           pwd
           ls -la
