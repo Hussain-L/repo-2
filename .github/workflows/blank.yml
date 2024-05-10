@@ -20,8 +20,7 @@ jobs:
           echo "First line"
           git remote add source https://github.com/Hussain-L/repo-1
           git fetch source
-          git checkout branch-1
-          git pull --rebase source branch-1
+          git pull origin main
 
       - name: Push changes to target repository
         run: |
