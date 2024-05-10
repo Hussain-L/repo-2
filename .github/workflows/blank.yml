@@ -19,14 +19,9 @@ jobs:
         run: |
           echo "First line"
           git remote add source https://github.com/Hussain-L/repo-1
-          echo " remote done"
           git fetch source
-          echo "fetch done"
-          git reset --hard
-          ls
-          cat README.md
-          pwd
-          git pull --rebase source branch-2
+          git checkout branch-1
+          git pull --rebase source branch-1
 
       - name: Push changes to target repository
         run: |
