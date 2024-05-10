@@ -21,9 +21,13 @@ jobs:
           git remote add source https://github.com/Hussain-L/repo-1
           git fetch source
           git pull origin main
+          pwd
+          ls -la
 
       - name: Push changes to target repository
         run: |
+          pwd
+          ls -la
           git push origin branch-1
 
 
