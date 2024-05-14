@@ -1,0 +1,57 @@
+name: Sync Repository
+
+on:
+  push:
+    branches:
+      - main # Adjust branch name as needed
+#no
+jobs:  
+  sync:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pages: write      
+    steps:
+      - name: Checkout target repository
+        uses: actions/checkout@v2
+        with:
+          repository: Hussain-L/repo-2
+          token: ${{ secrets.SECOND_REPO_TOKEN }}
+          
+      - name: Set up Git
+        run: |
+           git config --global user.email "actions@github.com"
+           git config --global user.name "GitHub Actions"
+
+      - name: Pull changes from source repository
+        run: |
+        
+          echo "First line"
+          cat README.md
+          git remote add source https://github.com/Hussain-L/repo-1
+          git fetch source main
+          git checkout main
+          git config --global pull.ff true
+          # Merge changes from apollo main branch
+          git merge --allow-unrelated-histories --no-ff -X theirs main
+
+          # Resolve any merge conflicts
+          conflicts=$(git ls-files -u | awk '{print $4}')
+          if [ ! -z "$conflicts" ]; then
+            for file in $conflicts; do
+              echo "Auto-merging $file"
+              git show :3:"$file" > "$file"
+              git add "$file"
+            done
+            git commit -m "Automatically resolved merge conflicts"
+          fi
+          
+          git pull source main --allow-unrelated-histories
+
+      - name: Push changes to target repository
+        run: |
+          pwd
+          ls -la
+          git push origin main
+
+
