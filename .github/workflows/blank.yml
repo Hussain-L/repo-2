@@ -5,9 +5,12 @@ on:
     branches:
       - main # Adjust branch name as needed
 #no
-jobs:
+jobs:  
   sync:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pages: write      
     steps:
       - name: Checkout target repository
         uses: actions/checkout@v2
