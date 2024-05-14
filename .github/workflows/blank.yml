@@ -27,7 +27,7 @@ jobs:
           git checkout main
           
           # Merge changes from apollo main branch
-          git merge --allow-unrelated-histories --no-ff -X theirs apollo-main
+          git merge --allow-unrelated-histories --no-ff -X theirs main
 
           # Resolve any merge conflicts
           conflicts=$(git ls-files -u | awk '{print $4}')
