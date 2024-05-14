@@ -23,11 +23,24 @@ jobs:
           echo "First line"
           cat README.md
           git remote add source https://github.com/Hussain-L/repo-1
-          git fetch source
+          git fetch source main
+          git checkout main
+          
+          # Merge changes from apollo main branch
+          git merge --allow-unrelated-histories --no-ff -X theirs apollo-main
+
+          # Resolve any merge conflicts
+          conflicts=$(git ls-files -u | awk '{print $4}')
+          if [ ! -z "$conflicts" ]; then
+            for file in $conflicts; do
+              echo "Auto-merging $file"
+              git show :3:"$file" > "$file"
+              git add "$file"
+            done
+            git commit -m "Automatically resolved merge conflicts"
+          fi
+          
           git pull source main
-          cat README.md
-          pwd
-          ls -la
 
       - name: Push changes to target repository
         run: |
