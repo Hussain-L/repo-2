@@ -40,7 +40,7 @@ jobs:
             git commit -m "Automatically resolved merge conflicts"
           fi
           
-          git pull source main
+          git pull source main --allow-unrelated-histories
 
       - name: Push changes to target repository
         run: |
